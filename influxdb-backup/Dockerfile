@@ -3,7 +3,7 @@
 #
 
 # Build the extra-instance using phusion base image 
-FROM phusion/baseimage
+FROM phusion/baseimage:master
 
 # Install influxdb database
 RUN curl -sL https://repos.influxdata.com/influxdb.key | apt-key add -
@@ -11,8 +11,8 @@ RUN echo "deb https://repos.influxdata.com/ubuntu xenial stable" > /etc/apt/sour
 RUN apt-get update && apt-get install -y influxdb
 
 # To backup influxdb to S3 Bucket, some packages need to be installed as follows:
-RUN apt-get update && apt-get install -y python-pip 
-RUN pip install awscli --upgrade  
+RUN apt-get update && apt-get install -y python3-pip 
+RUN pip3 install awscli --upgrade --user
 
 # Default InfluxDB host
 ENV INFLUX_HOST=influxdb

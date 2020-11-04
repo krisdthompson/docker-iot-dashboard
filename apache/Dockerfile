@@ -3,14 +3,15 @@
 #
 
 # Start from Phusion.
-FROM phusion/baseimage
+FROM phusion/baseimage:master
 
 RUN /usr/bin/apt-get update && /usr/bin/apt-get install software-properties-common -y
-RUN /usr/bin/add-apt-repository ppa:certbot/certbot && /usr/bin/apt-get update && /usr/bin/apt-get install apache2 -y
+#RUN /usr/bin/add-apt-repository ppa:certbot/certbot && /usr/bin/apt-get update && /usr/bin/apt-get install apache2 -y
+RUN /usr/bin/apt-get update && /usr/bin/apt-get install apache2 -y
 #
 #  Add the certbot layer
 #
-RUN /usr/bin/apt-get install python-certbot-apache -y
+RUN /usr/bin/apt-get install python3-certbot-apache -y
 #
 # enable proxys and generally set up.
 #
